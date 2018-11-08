@@ -17,17 +17,7 @@
 
         <button type="submit" class="btn btn-primary center">Criar</button>
     </form>
-    <div class="rounded badge-danger">
-            @if($errors->count())
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>
-                    {{$error}}
-                </li>
-                @endforeach
-            </ul>
-            @endif     
-    </div>
+    @include('partial.error');
 </div>
 
 @endsection

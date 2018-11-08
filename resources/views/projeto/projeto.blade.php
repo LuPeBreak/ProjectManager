@@ -61,12 +61,13 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-10">
-                        <input type="text" class="form-control" name="title" placeholder="Nome da tarefa">
+                        <input type="text" class="form-control {{$errors->has('title')?'alert-danger':''}}" name="title" placeholder="Nome da tarefa">
                     </div>
                     <div class="col-md-2">
                         <button type='submit' class="btn btn-primary" role="button">criar</button>
                     </div>
                 </div>
+                @include('partial.error');
             </div>
 
         </form>

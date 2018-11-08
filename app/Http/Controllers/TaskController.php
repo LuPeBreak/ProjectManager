@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     public function store(Request $request,Project $project){
-        $project->tasks()->create([
-            'title'=>$request['title'],
-            'completed'=>$request->has('completed')
-        ]);
+        $project->tasks()->create(
+            $request->validate([
+                'title'=>'required'
+            ])
+        );
         return back();
     }
     public function update(Request $request,Task $task){

@@ -47,7 +47,7 @@ class ProjectController extends Controller
      */
     public function show(project $project)
     {
-        //
+        return view('projeto.projeto',compact('project'));
     }
 
     /**
@@ -58,7 +58,7 @@ class ProjectController extends Controller
      */
     public function edit(project $project)
     {
-        //
+        return view('projeto.edit',compact('project'));
     }
 
     /**
@@ -70,7 +70,11 @@ class ProjectController extends Controller
      */
     public function update(Request $request, project $project)
     {
-        //
+        $project->update($request->validate([
+            'title' => 'required|min:3',
+            'description'=>'required|min:10'
+        ]));
+        return redirect('/');
     }
 
     /**
@@ -81,6 +85,8 @@ class ProjectController extends Controller
      */
     public function destroy(project $project)
     {
-        //
+        $project->delete();
     }
+
+
 }

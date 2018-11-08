@@ -1,3 +1,6 @@
 .form-container{
     margin: 50px;
 }
+.is-completed{
+    text-decoration: line-through;
+}

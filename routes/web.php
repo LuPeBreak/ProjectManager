@@ -13,3 +13,6 @@
 
 Route::get('/', 'ProjectController@index');
 Route::resource('project', 'ProjectController');
+Route::post('/task/{project}', "TaskController@store");
+Route::put('/task/{task}',"TaskController@update");
+Route::delete('/task/{task}',"TaskController@destroy");

@@ -14,12 +14,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('projeto.projetos');
+        $project = Project::all();
+        return view('projeto.projetos',compact('project'));
     }
 
     public function create()
     {
-        
+        return view('projeto.create');
     }
 
     /**
@@ -30,7 +31,12 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        project::create($request->validate([
+            'title' => 'required|min:3',
+            'description'=>'required|min:10'
+        ]));
+        return redirect('/');
     }
 
     /**

@@ -4,3 +4,9 @@
 .is-completed{
     text-decoration: line-through;
 }
+.margin10{
+    margin: 10pt;
+}
+.marginl5{
+    margin-left: 5pt;
+}

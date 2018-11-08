@@ -6,7 +6,21 @@
     <div>
         <h1>{{$project['title']}}</h1>
         <p>{{$project['description']}}</p>
-        <a href="/project/{{$project['id']}}/edit">Editar</a>
+
+
+        <div class="row">
+                <a href="/project/{{$project['id']}}/edit"><button type="button" class="margin10 btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-edit"></span> Editar
+                      </button></a>
+                <form action="/project/{{$project['id']}}" method="POST">
+                    @method("delete")
+                    @csrf
+                    <button type="submit" class="margin10 btn btn-danger btn-sm marginl5">
+                            <span class="glyphicon glyphicon-trash"></span> 
+                    </button>
+                </form>
+        </div>
+        
     </div>
     <br>
     <br>
@@ -15,16 +29,26 @@
         <h3>Tarefas</h3>
         <ul>
             @foreach ($project->tasks as $task)
-            <form action="/task/{{$task['id']}}" method="POST">
-                @csrf
-                @method('PUT')
-                <label class="completed {{$task->completed?"is-completed":""}}"for="completed">
-                        <input type="checkbox" name="completed" onchange="this.form.submit()"
-                        {{$task['completed']?"checked line-through":""}}>
-                    {{$task['title']}}
-                </label>
-                
-            </form>
+            <div class="row margin10">
+                    <form action="/task/{{$task['id']}}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <label class="completed {{$task->completed?"is-completed":""}}"for="completed">
+                                <input type="checkbox" name="completed" onchange="this.form.submit()"
+                                {{$task['completed']?"checked line-through":""}}>
+                            {{$task['title']}}
+                        </label>
+                        
+                    </form>
+                    <form action="/task/{{$task['id']}}" method="POST">
+                        @method("delete")
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm marginl5">
+                                <span class="glyphicon glyphicon-trash"></span> 
+                        </button>
+                    </form>
+            </div>
+            
             @endforeach
 
         </ul>

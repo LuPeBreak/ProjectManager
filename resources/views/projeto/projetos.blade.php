@@ -20,7 +20,9 @@
                     </a>
                 </th>
                 <th> {{$p['description']}} </th>
-                <th> <a href="/project/{{$p['id']}}/edit">Editar</a></th>
+                <th> <a href="/project/{{$p['id']}}/edit"><button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-edit"></span> Editar
+        </button></a></th>
             </tr>
 
             @endforeach
